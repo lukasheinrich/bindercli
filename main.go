@@ -1,19 +1,14 @@
-// +build go1.5
-
 package main
 
 import (
 	"fmt"
 	"os"
-	// "path"
-
-	gottyclient "github.com/moul/gotty-client"
 	"github.com/sirupsen/logrus"
-	// "github.com/urfave/cli"
 	"net/http"
 	"io/ioutil"
 	"strings"
     "encoding/json"
+	gottyclient "github.com/moul/gotty-client"
 )
 
 func main() {
@@ -67,7 +62,7 @@ func main() {
 				}
 				client.V2 = true
 
-				if err = client.Loop(); err != nil {
+				if err = client.Loop();err != nil {
 					logrus.Fatalf("Communication error: %v", err)
 				}
 							
