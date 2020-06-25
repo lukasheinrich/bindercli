@@ -4,7 +4,7 @@ package main
 
 import (
 	"fmt"
-	// "os"
+	"os"
 	// "path"
 
 	gottyclient "github.com/moul/gotty-client"
@@ -18,7 +18,12 @@ import (
 
 func main() {
 
-	resp, err := http.Get("https://mybinder.org/build/gh/lukasheinrich/gotty-binder/master")
+	argsWithoutProg := os.Args[1:]
+	
+	fmt.Printf("Launching Binder: %s\n", argsWithoutProg[0])
+
+	binder_launch := fmt.Sprintf("https://mybinder.org/build/gh/%s/master",argsWithoutProg[0])
+	resp, err := http.Get(binder_launch)
 	if err != nil {
 		logrus.Fatalf("Communication error")
 	}
